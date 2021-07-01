@@ -15,20 +15,20 @@ public class FirstTask {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        logger.info("Драйвер запустился!");
+        logger.info("Драйвер запущен");
     }
 
     @Test
     public void openPage() {
-        driver.get("https://yandex.ru/");
-        logger.info("Открыта страница Yandex - " + "https://yandex.ru/");
+        driver.get("https://www.dns-shop.ru/");
+        logger.info("Открыта страница DNS - " + "https://www.dns-shop.ru/");
     }
 
     @AfterEach
     public void setDown() {
         if(driver != null) {
             driver.quit();
-            logger.info("Драйвер остановлен!");
+            logger.info("Драйвер остановлен");
         }
     }
 }
