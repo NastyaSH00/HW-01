@@ -16,13 +16,13 @@ import java.util.concurrent.TimeUnit;
 public class TestDriverConfiguration {
     protected static WebDriver driver;
     private Logger logger = LogManager.getLogger(TestDriverConfiguration.class);
-    String browser = System.getProperty("browser", "chrome");
+    String browser = System.getProperty("browser", "firefox");
     String strategy = System.getProperty("strategy", "normal");
 
     @BeforeEach
     public void setUp() {
         logger.info("Браузер - " + browser);
-        driver = WebDriverFactory.getDriver(browser, strategy);
+        driver = WebDriverFactory.getDriver(browser.toLowerCase(), strategy.toLowerCase());
         logger.info("Драйвер стартовал!");
     }
 
