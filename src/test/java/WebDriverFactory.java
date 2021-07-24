@@ -56,7 +56,7 @@ public class WebDriverFactory {
                 logger.info("Драйвер Mozilla Firefox");
 
                 FirefoxOptions optionsFirefox = new FirefoxOptions();
-                optionsFirefox.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+                //optionsFirefox.setPageLoadStrategy(PageLoadStrategy.NORMAL);
                 optionsFirefox.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.DISMISS);
                 optionsFirefox.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
                 optionsFirefox.setAcceptInsecureCerts(false);

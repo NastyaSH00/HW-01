@@ -53,14 +53,13 @@ public class TestDriverConfiguration {
 
         //ожидание
         try {
-            Thread.sleep(3000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         //вывод куки
         logger.info("Куки:");
-        driver.navigate().to("https://www.dns-shop.ru/");
         Set<Cookie> cookies = driver.manage().getCookies();
         //получение куки для firefox
         if (cookies.size() == 0) {
