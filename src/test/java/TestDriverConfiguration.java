@@ -3,10 +3,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.List;
 import java.util.Set;
@@ -56,21 +53,36 @@ public class TestDriverConfiguration {
 
         //ожидание
         try {
-            Thread.sleep(10000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         //вывод куки
         logger.info("Куки:");
+        driver.navigate().to("https://www.dns-shop.ru/");
         Set<Cookie> cookies = driver.manage().getCookies();
-        for(Cookie cookie : cookies) {
-            logger.info(String.format("Domain: %s", cookie.getDomain()));
-            logger.info(String.format("Expiry: %s", cookie.getExpiry()));
-            logger.info(String.format("Name: %s", cookie.getName()));
-            logger.info(String.format("Path: %s", cookie.getPath()));
-            logger.info(String.format("Value: %s", cookie.getValue()));
-            logger.info("--------------------------------------");
+        //получение куки для firefox
+        if (cookies.size() == 0) {
+            JavascriptExecutor js = (JavascriptExecutor)driver;
+            String returnStatement = (String) js.executeScript("return document.cookie");
+            //парсинг куки
+            String[] listCookies = returnStatement.split(";");
+            for (String currentCook: listCookies) {
+                String[] nameAndValue = currentCook.split("=");
+                logger.info("Cookie name = " + nameAndValue[0]);
+                logger.info("Cookie value = " + nameAndValue[1]);
+                logger.info("--------------------------------------");
+            }
+        }else {
+            for(Cookie cookie : cookies) {
+                logger.info(String.format("Domain: %s", cookie.getDomain()));
+                logger.info(String.format("Expiry: %s", cookie.getExpiry()));
+                logger.info(String.format("Name: %s", cookie.getName()));
+                logger.info(String.format("Path: %s", cookie.getPath()));
+                logger.info(String.format("Value: %s", cookie.getValue()));
+                logger.info("--------------------------------------");
+            }
         }
     }
 
