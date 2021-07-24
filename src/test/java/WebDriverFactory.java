@@ -8,8 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.ProfilesIni;
 import org.openqa.selenium.remote.CapabilityType;
 
 
@@ -56,7 +54,6 @@ public class WebDriverFactory {
                 logger.info("Драйвер Mozilla Firefox");
 
                 FirefoxOptions optionsFirefox = new FirefoxOptions();
-                //optionsFirefox.setPageLoadStrategy(PageLoadStrategy.NORMAL);
                 optionsFirefox.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.DISMISS);
                 optionsFirefox.setCapability(CapabilityType.SUPPORTS_JAVASCRIPT, false);
                 optionsFirefox.setAcceptInsecureCerts(false);

@@ -65,7 +65,7 @@ public class TestDriverConfiguration {
         if (cookies.size() == 0) {
             JavascriptExecutor js = (JavascriptExecutor)driver;
             String returnStatement = (String) js.executeScript("return document.cookie");
-            //парсинг куки
+            //парсинг куки для firefox
             String[] listCookies = returnStatement.split(";");
             for (String currentCook: listCookies) {
                 String[] nameAndValue = currentCook.split("=");
